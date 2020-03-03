@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :items, :shops, :users, :orders
+
+  get 'homepage', to: 'homepage#index'
+  get 'profile', to: 'profile#index'
+  get 'signin', to: 'signin#index'
+  get 'signup', to: 'signup#index'
+
+  root to: 'homepage#index'
+
 end

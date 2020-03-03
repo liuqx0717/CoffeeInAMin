@@ -33,8 +33,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_205307) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "items", id: false, force: :cascade do |t|
-    t.integer "id"
+  create_table "items", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.float "price"
@@ -43,8 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_205307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", id: false, force: :cascade do |t|
-    t.integer "id"
+  create_table "orders", force: :cascade do |t|
     t.datetime "date_created"
     t.string "name"
     t.string "description"
@@ -54,8 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_205307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "shops", id: false, force: :cascade do |t|
-    t.integer "id"
+  create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "addresss"
     t.string "description"
@@ -64,11 +61,11 @@ ActiveRecord::Schema.define(version: 2020_03_02_205307) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", id: false, force: :cascade do |t|
-    t.integer "id"
+  create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
     t.string "password"
+    t.integer "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

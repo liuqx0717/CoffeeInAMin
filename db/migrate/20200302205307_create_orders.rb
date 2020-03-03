@@ -1,7 +1,7 @@
 class CreateOrders < ActiveRecord::Migration[5.2]
   def change
-    create_table :orders, {id: false} do |t|
-      t.integer 'id'
+    create_table :orders do |t|
+      #t.integer 'id'
       t.datetime 'date_created'
       t.string 'name'
       t.string 'description'

@@ -1,0 +1,19 @@
+-# In Rails layouts are stored in app/views/layouts and default layout name is application.html.erb and it is used if there is no layout that's name correspond with controller name. For example, photos controller would have photos.html.erb layout.
+
+
+-# render <!DOCTYPE>
+!!!
+
+%html
+  %head
+    %title CoffeeInAMin
+    = csrf_meta_tags 
+    = csp_meta_tag 
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' 
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    = link_to 'Sign up', signup_path
+    = link_to 'Sign in', signin_path unless cookies[:token]
+    = yield 
