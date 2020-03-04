@@ -1,0 +1,12 @@
+= form_tag(controller: :users, action: :create) do
+  = label_tag :email, "Email"
+  = text_field_tag :email
+  = label_tag :password, "Password"
+  = password_field_tag :password
+  = label_tag :name, "Name"
+  = text_field_tag :name
+  = radio_button_tag :type, 0
+  = label_tag :type_user, "User account"
+  = radio_button_tag :type, 1
+  = label_tag :type_business, "Business account"
+  = submit_tag "Register"
