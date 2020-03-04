@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         @user.name = params[:name]
         @user.password = params[:password]
         @user.user_type = params[:user_type]
-        @user.save()
+        @user.save
         redirect_to root_path
     end
 
