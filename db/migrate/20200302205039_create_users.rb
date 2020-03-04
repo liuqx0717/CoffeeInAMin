@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string 'email'
       t.string 'name'
       t.string 'password'
-      t.integer 'type'    # 0: client   1: merchant
+      t.integer 'user_type'    # 0: client   1: merchant
 
       t.timestamps
     end
