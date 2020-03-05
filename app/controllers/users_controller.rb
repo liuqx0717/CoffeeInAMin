@@ -22,4 +22,13 @@ class UsersController < ApplicationController
             end
         end
     end
+
+    def update
+        @user = User.find cookie['user_id']
+        @user.update(email: params[:email], name: params[:name], password: params[:password])
+
+        @user.save()
+
+        redirect_to root_path
+    end
 end
