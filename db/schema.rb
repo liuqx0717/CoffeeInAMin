@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_205307) do
 
   create_table "shops", force: :cascade do |t|
     t.string "name"
-    t.string "addresss"
+    t.string "address"
     t.string "description"
     t.integer "owner_id"
     t.datetime "created_at", null: false

@@ -1,0 +1,8 @@
+= form_with(url: "/shops/" + @shop.id.to_s, method: "put") do |f|
+  = label_tag :name, "Name"
+  = f.text_field :name, value: @shop.name
+  = f.label :address, "Address"
+  = f.text_field :address, value: @shop.address
+  = f.label :description, "Description"
+  = f.text_field :description, value: @user.description
+  = f.submit "Update"

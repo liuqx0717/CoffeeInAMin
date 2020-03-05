@@ -1,0 +1,8 @@
+= form_with(url: "/users/" + @user.id.to_s, method: "put") do |f|
+  = label_tag :email, "Email"
+  = f.text_field :email, value: @user.email
+  = f.label :password, "Password"
+  = f.password_field :password, value: @user.password
+  = f.label :name, "Name"
+  = f.text_field :name, value: @user.password
+  = f.submit "Update"
