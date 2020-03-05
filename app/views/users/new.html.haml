@@ -1,0 +1,12 @@
+= form_with(url: "/users", method: "post") do |f|
+  = label_tag :email, "Email"
+  = f.text_field :email
+  = f.label :password, "Password"
+  = f.password_field :password
+  = f.label :name, "Name"
+  = f.text_field :name
+  = f.label :user_type, "User account"
+  = f.radio_button :user_type, 0
+  = f.label :type_business, "Business account"
+  = f.radio_button :user_type, 1
+  = f.submit "Register"

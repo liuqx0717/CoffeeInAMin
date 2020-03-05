@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
+    def new
+        @user = User.new
+    end
+
     def create
+        logger = Rails.logger
+        logger.info "*************************************************"
+        logger.info "create"
+        logger.info params[:email]
         @user = User.new
         @user.email = params[:email]
         @user.name = params[:name]
@@ -9,19 +17,6 @@ class UsersController < ApplicationController
         redirect_to root_path
     end
 
-    def login
-        user = User.where(email: params[:email]).take
-        if user == nil
-            render "signin/invalid"
-        else
-            if user.password == params[:password]
-                cookies[:user_id] = user.id
-                render "signin/success"
-            else
-                render "signin/failure"
-            end
-        end
-    end
 
     def update
         @user = User.find cookie['user_id']
