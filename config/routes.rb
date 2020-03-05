@@ -4,8 +4,10 @@ Rails.application.routes.draw do
 
   get 'homepage', to: 'homepage#index'
   get 'profile', to: 'profile#index'
+  post 'profile', to: 'profile#update'
   get 'signin', to: 'signin#index'
   get 'signup', to: 'signup#index'
+
 
   root to: 'homepage#index'
 
