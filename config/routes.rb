@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'profile', to: 'profile#update'
   get 'signin', to: 'signin#index'
   get 'signup', to: 'signup#index'
+  get 'shops', to: 'shops#index'
 
 
   root to: 'homepage#index'

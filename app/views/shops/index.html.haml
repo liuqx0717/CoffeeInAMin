@@ -1,0 +1,19 @@
+%h1 Shops in CoffeeInAMin
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Address
+      %th Description
+      %th
+      %th
+
+  %tbody
+    - @shops.each do |shop|
+      %tr
+        %td= shop.name
+        %td= shop.address
+        %td= shop.description
+        %td= link_to 'Show', shop
+%br

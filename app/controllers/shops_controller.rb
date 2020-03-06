@@ -3,6 +3,10 @@ class ShopsController < ApplicationController
         @shop = Shop.new
     end
 
+    def index
+        @shops = Shop.all
+    end
+
     def create
         @shop = Shop.new
         @shop.name = params[:name]
