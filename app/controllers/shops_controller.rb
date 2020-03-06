@@ -18,7 +18,6 @@ class ShopsController < ApplicationController
 
     def update
         @shop = Shop.find params[:id]
-        @shop.email = params[:email]
         @shop.name = params[:name]
         @shop.address = params[:address]
         @shop.description = params[:description]
