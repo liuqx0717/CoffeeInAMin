@@ -25,4 +25,8 @@ class ShopsController < ApplicationController
 
         redirect_to "/shops/" + @shop.id.to_s
     end
+
+    def menu
+        @menu = Item.find_by shop_id: params[:id]
+    end
 end

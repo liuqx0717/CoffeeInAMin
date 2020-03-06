@@ -1,0 +1,11 @@
+%table
+  %tbody
+    %tr
+      %td Coffee_Type
+      %td Price
+    - @menu.each do |item|
+      %tr
+        %td= item.name
+        %td= item.price
+
+
