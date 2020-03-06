@@ -5,4 +5,7 @@
   = f.text_field :description, value: @item.description
   = label_tag :price, "price"
   = f.text_field :price, value: @item.price
-  = f.submit "Update"
+  = f.submit "Update" if @owner?
+
+= form_with(url: "/orders?item_id=" + @item.id.to_s, method: "post") do |f|
+  = f.submit "Order Now" if @user_type == 0

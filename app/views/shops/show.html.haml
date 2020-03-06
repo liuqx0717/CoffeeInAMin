@@ -5,4 +5,6 @@
   = f.text_field :address, value: @shop.address
   = f.label :description, "Description"
   = f.text_field :description, value: @shop.description
-  = f.submit "Update"
+  = f.text_field :tmp1, value: cookies[:user_id]
+  = f.text_field :tmp2, value: @shop.owner_id
+  = f.submit "Update" if cookies[:user_id] == @shop.owner_id

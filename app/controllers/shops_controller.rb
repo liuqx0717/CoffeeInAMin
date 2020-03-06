@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
     def new
-        @shop = Shop.new
+        
     end
 
     def index
@@ -12,6 +12,7 @@ class ShopsController < ApplicationController
         @shop.name = params[:name]
         @shop.address = params[:address]
         @shop.description = params[:description]
+        @shop.owner_id = params[:owner_id]
         @shop.save
         redirect_to root_path
     end
@@ -31,6 +32,6 @@ class ShopsController < ApplicationController
     end
 
     def menu
-        @menu = Item.find_by shop_id: params[:id]
+        @menu = Item.where("shop_id = ?", params[:id])
     end
 end

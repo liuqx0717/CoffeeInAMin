@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
 
     def show
         @item = Item.find params[:id]
+        shop = Shop.find @item.shop_id
+        @owner? = shop.owner_id == cookies[:user_id]
+        user = User.find cookies[:user_id]
+        @user_type = user.user_type
     end
 
     def update

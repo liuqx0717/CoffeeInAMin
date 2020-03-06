@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'signup', to: 'signup#index'
   get 'shops', to: 'shops#index'
 
+  get 'shops/:id/menu', to: 'shops#menu'
+
 
   root to: 'homepage#index'
 
