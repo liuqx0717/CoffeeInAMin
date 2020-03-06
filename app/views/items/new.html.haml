@@ -1,0 +1,10 @@
+= form_with(url: "/items", method: "post") do |f|
+  = label_tag :name, "Name"
+  = f.text_field :name
+  = label_tag :description, "Description"
+  = f.text_field :description
+  = label_tag :price, "price"
+  = f.text_field :price
+  = label_tag :shop_id, "shop_id"
+  = f.text_field :shop_id, value: @shop_id
+  = f.submit "Register"

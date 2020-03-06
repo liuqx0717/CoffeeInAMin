@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
+    # You need to provide shop_id as a query string 
+    # when using GET /items/new
     def new
-        @item = Item.new
+        @shop_id = params[:shop_id]
     end
 
     def create
@@ -22,7 +24,7 @@ class ItemsController < ApplicationController
         @item.name = params[:name]
         @item.description = params[:description]
         @item.price = params[:price]
-        @item.shop_id = params[:shop_id]
+        #@item.shop_id = params[:shop_id]
         @item.save
 
         redirect_to "/items/" + @item.id.to_s
