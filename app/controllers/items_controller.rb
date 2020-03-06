@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
     # You need to provide shop_id as a query string 
     # when using GET /items/new
     def new
-        @shop_id = params[:shop_id]
+        
     end
 
     def create
