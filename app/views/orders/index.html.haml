@@ -1,0 +1,11 @@
+%table
+  %tbody
+    %tr
+      %td Name
+      %td Price
+      %td Shop
+    - @orders.each do |order|
+      %tr
+        %td= link_to order.name, "/orders/" + order.id
+        %td= order.price
+        %td= link_to get_name_by_shop_id(order.shop_id), "/shops/" + order.shop_id

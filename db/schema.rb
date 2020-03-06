@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_03_02_205307) do
     t.string "description"
     t.float "price"
     t.integer "shop_id"
+    t.integer "item_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

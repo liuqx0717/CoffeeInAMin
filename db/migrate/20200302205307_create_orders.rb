@@ -8,6 +8,8 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.float 'price'
       
       t.integer 'shop_id'
+      t.integer 'item_id'
+      t.integer 'user_id'
 
       t.timestamps
     end
