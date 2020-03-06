@@ -14,7 +14,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    = link_to 'Sign up', new_user_path
+    = link_to 'Register', new_user_path
     = link_to 'Sign in', session_path unless cookies[:user_id]
     = link_to 'Sign out', session_logout_path if cookies[:user_id]
     = yield 
