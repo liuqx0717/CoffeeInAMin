@@ -1,11 +1,13 @@
 %table
-  %tbody
+  %thead
     %tr
-      %td Coffee_Type
-      %td Price
+      %th Name
+      %th Price
+  %tbody
     - @menu.each do |item|
       %tr
-        %td= item.name
+        %td= link_to item.name, "/items/" + item.id.to_s
         %td= item.price
 
+= link_to "Add", "/items/new?shop_id=" + params[:id].to_s if @is_owner
 

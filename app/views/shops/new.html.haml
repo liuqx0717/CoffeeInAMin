@@ -5,6 +5,7 @@
   = f.text_field :address 
   = f.label :description, "Description"
   = f.text_field :description
-  = f.label :owner_id, "Owner_id"
-  = f.text_field :owner_id, value: cookies[:user_id]
+  -#= f.label :owner_id, "Owner_id"
+  -#= f.text_field :owner_id, value: cookies[:user_id]
+  = f.hidden_field :owner_id, value: cookies[:user_id]
   = f.submit "Add"

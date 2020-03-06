@@ -5,6 +5,7 @@
   = f.text_field :description
   = label_tag :price, "Price"
   = f.text_field :price
-  = label_tag :shop_id, "Shop ID"
-  = f.text_field :shop_id, value: params[:shop_id]
+  -#= label_tag :shop_id, "Shop ID"
+  -#= f.text_field :shop_id, value: params[:shop_id]
+  = f.hidden_field :shop_id, value: params[:shop_id]
   = f.submit "Add"

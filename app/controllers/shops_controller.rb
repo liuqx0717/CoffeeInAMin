@@ -32,6 +32,7 @@ class ShopsController < ApplicationController
     end
 
     def menu
+        @is_owner = Shop.find(params[:id]).owner_id.to_s == cookies[:user_id].to_s
         @menu = Item.where("shop_id = ?", params[:id])
     end
 end

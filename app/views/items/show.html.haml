@@ -1,11 +1,11 @@
-= form_with(url: "/items" + @item.id.to_s, method: "put") do |f|
+= form_with(url: "/items/" + @item.id.to_s, method: "put") do |f|
   = label_tag :name, "Name"
   = f.text_field :name, value: @item.name
   = label_tag :description, "Description"
   = f.text_field :description, value: @item.description
   = label_tag :price, "price"
   = f.text_field :price, value: @item.price
-  = f.submit "Update" if @owner?
+  = f.submit "Update" if @is_owner
 
 = form_with(url: "/orders?item_id=" + @item.id.to_s, method: "post") do |f|
   = f.submit "Order Now" if @user_type == 0

@@ -6,7 +6,7 @@
       %td Shop
     - @orders.each do |order|
       %tr
-        %td= link_to order.name, "/items/" + order.item_id
+        %td= link_to order.name, "/items/" + order.item_id.to_s
         %td= order.price
-        %td= link_to get_name_by_shop_id(order.shop_id), "/shops/" + order.shop_id
-        = tag.td(link_to(get_name_by_user_id(order.user_id), "/users/" + order.user_id)) if @user_type == 1
+        %td= link_to get_name_by_shop_id(order.shop_id), "/shops/" + order.shop_id.to_s
+        = tag.td(link_to(get_name_by_user_id(order.user_id), "/users/" + order.user_id.to_s)) if @user_type == 1

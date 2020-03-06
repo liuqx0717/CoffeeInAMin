@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     # You need to pass item_id as query parameter
     # when using POST /orders
     def create
-        item = Item.find_by(id: params[item_id])
+        item = Item.find_by(id: params[:item_id])
 
         @order = Order.new
         @order.name = item.name
@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
     def index
         uid = cookies[:user_id]
-        @user_type = User.find_by(id: uid).take.user_type
+        @user_type = User.find(uid).user_type
         if @user_type == 0
             @orders = Order.where("user_id = ?", uid)
         else
