@@ -18,5 +18,5 @@
     = link_to 'Sign in', session_path unless cookies[:user_id]
     = link_to 'Sign out', session_logout_path if cookies[:user_id]
     = link_to 'Orders', "/orders" if cookies[:user_id]
-    = link_to 'Profile', "/profile" if cookies[:user_id]
+    = link_to 'Profile', "/users/" + cookies[:user_id].to_s if cookies[:user_id]
     = yield 
