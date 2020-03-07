@@ -4,8 +4,7 @@
   = f.label :password, "Password"
   = f.password_field :password, value: @user.password
   = f.label :name, "Name"
-  = f.text_field :name, value: @user.password
+  = f.text_field :name, value: @user.name
   = f.submit "Update"
-
 = link_to "Create a shop", "/shops/new" if @user.user_type == 1 && @shop == nil
 = link_to @shop.name, "/shops/" + @shop.id if @shop
