@@ -6,3 +6,6 @@
   = f.label :name, "Name"
   = f.text_field :name, value: @user.password
   = f.submit "Update"
+
+= link_to "Create a shop", "/shops/new" if @user.user_type == 1 && @shop == nil
+= link_to @shop.name, "/shops/" + @shop.id if @shop

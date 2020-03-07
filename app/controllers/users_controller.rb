@@ -10,11 +10,20 @@ class UsersController < ApplicationController
         @user.password = params[:password]
         @user.user_type = params[:user_type]
         @user.save
+
         redirect_to root_path
     end
 
     def show
         @user = User.find cookies[:user_id]
+
+        if @user.user_type == 1
+            @shop = Shop.find_by owner_id: @user.id
+        else
+            @shop = nil
+        end
+
+
     end
 
     def update
