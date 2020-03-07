@@ -5,7 +5,9 @@ Heroku url : https://aqueous-caverns-82625.herokuapp.com/
 Features implemented now:
 
 (1) Register and login (for business user and customer)
+
 (2) Business User:
+
 	(a) Create account
 	(b) Update account details
 	(c) Create shop	
@@ -14,6 +16,7 @@ Features implemented now:
 	(f) Update menu
 	(g) See orders placed by customers
 (3)Customer:
+
 	(a) Create account
 	(b) Update account details
 	(c) See all shops
