@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find cookies['user_id']
+        @user = User.find cookies[:user_id]
         @user.email = params[:email]
         @user.name = params[:name]
         @user.password = params[:password]
