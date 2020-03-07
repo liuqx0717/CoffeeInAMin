@@ -1,5 +1,14 @@
 # README
 
+Team Members:
+
+Quanxing Liu (ql2368)
+
+Reshma Asharaf Beena (ra3027)
+
+Xin Gu (xg2327)
+
+
 Heroku url : https://aqueous-caverns-82625.herokuapp.com/
 
 Features implemented now:
