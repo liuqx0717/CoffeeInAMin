@@ -5,10 +5,8 @@
   = f.text_field :address, value: @shop.address
   = f.label :description, "Description"
   = f.text_field :description, value: @shop.description
-  -#= f.label :tmp1, "user_id"
-  -#= f.text_field :tmp1, value: cookies[:user_id]
-  -#= f.label :tmp2, "shop_id"
-  -#= f.text_field :tmp2, value: @shop.owner_id
   = f.submit "Update" if cookies[:user_id].to_s == @shop.owner_id.to_s
 
 = link_to "Menu", "/shops/" + @shop.id.to_s + "/menu"
+= image_tag "https://maps.google.com/maps/api/staticmap?zoom=17&size=400x300&markers=#{@shop.latitude}%2C#{@shop.longitude}&key=#{Rails.application.credentials.google_maps_api_key}"
+= link_to "Navigate", "https://www.google.com/maps/dir/?api=1&origin=#{@results.first.coordinates[0]}%2C#{@results.first.coordinates[1]}&destination=#{@shop.address}&travelmode=walking", target: "_blank", class: "btn btn-large btn-primary"

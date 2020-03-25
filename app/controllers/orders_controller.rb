@@ -15,10 +15,36 @@ class OrdersController < ApplicationController
         redirect_to root_path
     end
 
-    #def update
+    def show
+        redirect_to root_path
+    end
 
-        #redirect_to "/orders/" + @order.id.to_s
-    #end
+    def checkout_new
+        @order = Order.find params[:id]
+    end
+
+    def checkout
+        @order = Order.find params[:id]
+        raise "Please, check registration errors" unless @order.valid?
+        process_payment
+        # @order.status = 'COMPLETED'
+        @order.save
+        redirect_to @order, notice: 'Order was successfully created.'
+    end
+
+    private
+    def stripe_params
+        params.permit :stripeEmail, :stripeToken
+    end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_order
+        @order = Order.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def order_params
+        params.require(:order).permit(:full_name, :telephone)
+    end
 
     def index
         uid = cookies[:user_id]
@@ -28,5 +54,17 @@ class OrdersController < ApplicationController
         else
             @orders = Order.joins("INNER JOIN shops ON orders.shop_id = shops.id AND shops.owner_id = " + uid.to_s)
         end
+    end
+
+    def process_payment
+        Stripe.api_key = "sk_test_7sWbbjSHC46cm4udZL48y75D00Pvpg8zE5"
+        customer = Stripe::Customer.create email: stripe_params["stripeEmail"],
+                                           card: stripe_params["stripeToken"]
+
+        Stripe::Charge.create customer: customer.id,
+                              amount: @order.price.to_i * 100,
+                              description: @order.description,
+                              currency: 'usd'
+
     end
 end

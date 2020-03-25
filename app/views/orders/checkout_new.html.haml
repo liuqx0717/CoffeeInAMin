@@ -1,0 +1,12 @@
+= form_with(url: "/orders/" + @order.id.to_s + "/checkout", method: "post") do |f|
+  .field
+    = f.hidden_field :order_id, value: @order.id.to_s
+  .field
+    = f.label :full_name
+    = f.text_field :full_name
+  .field
+    = f.label :telephone
+    = f.text_field :telephone
+  .actions
+    %script.stripe-button{ src: "https://checkout.stripe.com/checkout.js",
+          data: {amount: @order.price.to_i*100, description: @order.name, key: "pk_test_UXt74L0NxluBiX3yTfqHAU9700aZ76ls3Q"}}

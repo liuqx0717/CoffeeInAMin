@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "session/logout", to: 'session#logout'
   get "session", to: 'session#index'
 
+
   get 'homepage', to: 'homepage#index'
   get 'profile', to: 'profile#index'
   post 'profile', to: 'profile#update'
@@ -14,7 +15,8 @@ Rails.application.routes.draw do
   get 'shops', to: 'shops#index'
 
   get 'shops/:id/menu', to: 'shops#menu'
-
+  post 'orders/:id/checkout', to: 'orders#checkout'
+  get 'orders/:id/checkout', to: 'orders#checkout_new'
 
   root to: 'homepage#index'
 

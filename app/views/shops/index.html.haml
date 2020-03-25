@@ -6,10 +6,16 @@
       %th Name
       %th Address
       %th Description
+      %th Walking distance(miles)
+      %th Duration(min)
 
   %tbody
-    - @shops.each do |shop|
+    - @shops.zip(@routes).each do |shop,route|
       %tr
         %td= link_to shop.name, "/shops/" + shop.id.to_s
         %td= shop.address
         %td= shop.description
+        %td= route.distance
+        %td= route.duration
+
+
