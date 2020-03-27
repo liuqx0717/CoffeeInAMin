@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "session/logout", to: 'session#logout'
   get "session", to: 'session#index'
 
+  get "users/new/error", to: 'users#error'
+
   get 'homepage', to: 'homepage#index'
   get 'profile', to: 'profile#index'
   post 'profile', to: 'profile#update'

@@ -1,5 +1,5 @@
 = form_with(url: "/users", method: "post") do |f|
-  = label_tag :email, "Email"
+  = f.label :email, "Email"
   = f.text_field :email
   = f.label :password, "Password"
   = f.password_field :password

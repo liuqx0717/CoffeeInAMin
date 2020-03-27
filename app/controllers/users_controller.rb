@@ -3,15 +3,25 @@ class UsersController < ApplicationController
         @user = User.new
     end
 
-    def create
-        @user = User.new
-        @user.email = params[:email]
-        @user.name = params[:name]
-        @user.password = Digest::SHA2.hexdigest(params[:password])
-        @user.user_type = params[:user_type]
-        @user.save
+    def error
+    end
 
-        redirect_to root_path
+    def create
+        user = User.find_by email: params[:email]
+        if user == nil
+            user = User.new
+            user.email = params[:email]
+            user.name = params[:name]
+            user.password = Digest::SHA2.hexdigest(params[:password])
+            user.user_type = params[:user_type]
+            user.save
+            redirect_to root_path
+        else
+            @msg = "This email has already been registered!"
+            redirect_to "/users/new/error"
+            # The following doesn't work, and I don't know why.
+            #render "users/error"
+        end
     end
 
     def show
