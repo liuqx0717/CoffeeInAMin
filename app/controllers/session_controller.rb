@@ -4,8 +4,8 @@ class SessionController < ApplicationController
         if user == nil
             render "session/invalid"
         else
-            if Digest::SHA2.hexdigest(user.password) == params[:password]
-                cookies[:user_id] = user.id
+            if user.password == Digest::SHA2.hexdigest(params[:password])
+                cookies.signed[:user_id] = user.id
                 render "session/success"
             else
                 render "session/failure"

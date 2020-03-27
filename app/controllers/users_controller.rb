@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find cookies[:user_id]
+        @user = User.find cookies.signed[:user_id]
 
         if @user.user_type == 1
             @shop = Shop.find_by owner_id: @user.id
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        @user = User.find cookies[:user_id]
+        @user = User.find cookies.signed[:user_id]
         @user.email = params[:email]
         @user.name = params[:name]
         @user.password = Digest::SHA2.hexdigest(params[:password])

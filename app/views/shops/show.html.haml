@@ -9,6 +9,6 @@
   -#= f.text_field :tmp1, value: cookies[:user_id]
   -#= f.label :tmp2, "shop_id"
   -#= f.text_field :tmp2, value: @shop.owner_id
-  = f.submit "Update" if cookies[:user_id].to_s == @shop.owner_id.to_s
+  = f.submit "Update" if cookies.signed[:user_id].to_s == @shop.owner_id.to_s
 
 = link_to "Menu", "/shops/" + @shop.id.to_s + "/menu"
