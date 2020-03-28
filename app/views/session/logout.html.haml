@@ -1,5 +1,7 @@
 - content_for :head do
   :javascript
+    document.cookie = "user_id=; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
     function google_onSignIn(googleUser) {
         var auth2 = gapi.auth2.getAuthInstance();
         auth2.signOut().then(function () {
@@ -9,5 +11,3 @@
     }
 
 .g-signin2(data-onsuccess="google_onSignIn")
-:javascript
-    document.cookie = "user_id=; expires = Thu, 01 Jan 1970 00:00:00 GMT";
