@@ -1,13 +1,17 @@
 - content_for :head do
   :javascript
     document.cookie = "user_id=; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+    setTimeout(function(){window.location.href = "/";}, 3000)
 
     function google_onSignIn(googleUser) {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          //alert('Google user signed out.');
-          window.location.href = "/";
-        });
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+      //alert('Google user signed out.');
+      window.location.href = "/";
+      });
     }
 
-.g-signin2(data-onsuccess="google_onSignIn")
+%h1 Signing out...
+
+%div(style="display: none;")
+  .g-signin2(data-onsuccess="google_onSignIn")
