@@ -17,10 +17,10 @@ class UsersController < ApplicationController
             user.save
             redirect_to root_path
         else
-            @msg = "This email has already been registered!"
-            redirect_to "/users/new/error"
-            # The following doesn't work, and I don't know why.
-            #render "users/error"
+            @msg = "The email has already been registered!"
+            # To make render() work, you need to specify "local: true" when
+            # using form_with().
+            render "users/error"
         end
     end
 

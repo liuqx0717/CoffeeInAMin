@@ -1,3 +1,5 @@
+require 'net/http'
+
 class SessionController < ApplicationController
     def login
         user = User.where(email: params[:email]).take
@@ -11,6 +13,16 @@ class SessionController < ApplicationController
                 render "session/failure"
             end
         end
+    end
+
+    def login_google
+        id_token = params[:id_token]
+
+        uri = URI("https://oauth2.googleapis.com/tokeninfo?id_token=" + id_token)
+        response = Net::HTTP.get_response(uri)
+        result = JSON.parse(response.body)
+
+        redirect_to "/" + result["iss"]
     end
 
     def logout
