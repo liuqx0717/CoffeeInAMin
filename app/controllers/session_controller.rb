@@ -8,12 +8,13 @@ class SessionController < ApplicationController
         else
             if user.password == Digest::SHA2.hexdigest(params[:password])
                 cookies.signed[:user_id] = user.id
-                render "session/success"
+                redirect_to root_path
             else
                 render "session/failure"
             end
         end
     end
+
 
     def login_google
         id_token = params[:id_token]
@@ -22,13 +23,35 @@ class SessionController < ApplicationController
         response = Net::HTTP.get_response(uri)
         result = JSON.parse(response.body)
 
-        redirect_to "/" + result["iss"]
+        if result.key?("email")
+            email = result["email"]
+            user = User.where(email: email).take
+            if user == nil
+                user = User.new
+                user.email = email
+                user.name = result["name"]
+                user.password = "<Google>"
+                user.user_type = 0
+                user.save
+
+                user_id = User.where(email: email).take.id
+            else
+                user_id = user.id
+            end
+
+            cookies.signed[:user_id] = user.id
+            redirect_to root_path
+        else
+            render "session/failure"
+        end
     end
+
 
     def logout
         cookies.delete(:user_id)
         redirect_to root_path
     end
+
 
     def index
 

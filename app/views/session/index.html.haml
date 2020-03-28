@@ -1,7 +1,6 @@
 - content_for :head do
   :javascript
     function google_onSignIn(googleUser) {
-      return;
       var id_token = googleUser.getAuthResponse().id_token;
       document.getElementById("id_token").value = id_token;
       document.getElementById("login-google-button").click();

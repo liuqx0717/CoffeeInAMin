@@ -41,7 +41,7 @@
   %body
     = link_to 'Register', new_user_path unless cookies.signed[:user_id]
     = link_to 'Sign in', session_path unless cookies.signed[:user_id]
-    = link_to 'Sign out', "#", onClick: "signOut();" if cookies.signed[:user_id]
+    = link_to 'Sign out', "/", onClick: "signOut();" if cookies.signed[:user_id]
     = link_to 'Orders', "/orders" if cookies.signed[:user_id]
     = link_to 'Profile', "/users/" + cookies.signed[:user_id].to_s if cookies.signed[:user_id]
     = link_to 'Shops', "/shops" if cookies.signed[:user_id]

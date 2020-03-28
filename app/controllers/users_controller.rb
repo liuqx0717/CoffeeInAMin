@@ -27,21 +27,26 @@ class UsersController < ApplicationController
     def show
         @user = User.find cookies.signed[:user_id]
 
-        if @user.user_type == 1
-            @shop = Shop.find_by owner_id: @user.id
+        if @user.password != "<Google>"
+            if @user.user_type == 1
+                @shop = Shop.find_by owner_id: @user.id
+            else
+                @shop = nil
+            end
+            render "users/show"
         else
-            @shop = nil
+            render "users/show-google"
         end
-
-
     end
 
     def update
-        @user = User.find cookies.signed[:user_id]
-        @user.email = params[:email]
-        @user.name = params[:name]
-        @user.password = Digest::SHA2.hexdigest(params[:password])
-        @user.save
+        user = User.find cookies.signed[:user_id]
+        if user.password != "<Google>"
+            user.email = params[:email]
+            user.name = params[:name]
+            user.password = Digest::SHA2.hexdigest(params[:password])
+            user.save
+        end
 
         redirect_to "/users/" + @user.id.to_s
     end
