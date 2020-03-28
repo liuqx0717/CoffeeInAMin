@@ -48,8 +48,7 @@ class SessionController < ApplicationController
 
 
     def logout
-        cookies.delete(:user_id)
-        redirect_to root_path
+
     end
 
 

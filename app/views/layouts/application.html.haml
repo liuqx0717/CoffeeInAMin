@@ -13,28 +13,21 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-    %script(src="https://apis.google.com/js/platform.js?onload=onLoad" async defer)
+    %script(src="https://apis.google.com/js/platform.js")
     %meta(name="google-signin-client_id" content="575126619055-f79ettge14ha9aph5avt0v9muh22fssa.apps.googleusercontent.com")/
 
     :javascript
-      function onLoad() {
-        gapi.load('auth2', function() {
-          gapi.auth2.init();
-        });
-      }
+      //function signOut() {
+        //document.cookie = "user_id=; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+        //google_signOut();
+      //}
 
-      function signOut() {
-        document.cookie = "user_id=; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-        google_signOut();
-      }
-
-      function google_signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          //alert('Google user signed out.');
-        });
-
-      }
+      //function google_signOut() {
+        //var auth2 = gapi.auth2.getAuthInstance();
+        //auth2.signOut().then(function () {
+          ////alert('Google user signed out.');
+        //});
+      //}
 
     = yield :head
 
@@ -42,7 +35,8 @@
     = link_to "Home", "/"
     = link_to 'Register', new_user_path unless cookies.signed[:user_id]
     = link_to 'Sign in', session_path unless cookies.signed[:user_id]
-    = link_to 'Sign out', "/", onClick: "signOut();" if cookies.signed[:user_id]
+    -# link_to 'Sign out', "/", onClick: "signOut();" if cookies.signed[:user_id]
+    = link_to 'Sign out', "/session/logout" if cookies.signed[:user_id]
     = link_to 'Orders', "/orders" if cookies.signed[:user_id]
     = link_to 'Profile', "/users/" + cookies.signed[:user_id].to_s if cookies.signed[:user_id]
     = link_to 'Shops', "/shops" if cookies.signed[:user_id]
