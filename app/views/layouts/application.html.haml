@@ -39,6 +39,7 @@
     = yield :head
 
   %body
+    = link_to "Home", "/"
     = link_to 'Register', new_user_path unless cookies.signed[:user_id]
     = link_to 'Sign in', session_path unless cookies.signed[:user_id]
     = link_to 'Sign out', "/", onClick: "signOut();" if cookies.signed[:user_id]

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
             end
             render "users/show"
         else
-            render "users/show-google"
+            render "users/show-third-party"
         end
     end
 
