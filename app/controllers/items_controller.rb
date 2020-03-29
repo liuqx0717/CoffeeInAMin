@@ -18,8 +18,8 @@ class ItemsController < ApplicationController
     def show
         @item = Item.find params[:id]
         shop = Shop.find @item.shop_id
-        @is_owner = shop.owner_id.to_s == cookies[:user_id].to_s
-        user = User.find cookies[:user_id]
+        @is_owner = shop.owner_id.to_s == cookies.signed[:user_id].to_s
+        user = User.find cookies.signed[:user_id]
         @user_type = user.user_type
     end
 

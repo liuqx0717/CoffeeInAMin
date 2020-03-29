@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :items, :shops, :users, :orders
 
   post "session/login", to: 'session#login'
+  post "session/login-google", to: 'session#login_google'
   get "session/logout", to: 'session#logout'
   get "session", to: 'session#index'
 

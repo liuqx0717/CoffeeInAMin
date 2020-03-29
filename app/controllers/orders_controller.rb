@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
         @order.price = item.price
         @order.shop_id = item.shop_id
         @order.item_id = item.id
-        @order.user_id = cookies[:user_id]
+        @order.user_id = cookies.signed[:user_id]
         @order.save
         redirect_to root_path
     end
@@ -47,7 +47,7 @@ class OrdersController < ApplicationController
     end
 
     def index
-        uid = cookies[:user_id]
+        uid = cookies.signed[:user_id]
         @user_type = User.find(uid).user_type
         if @user_type == 0
             @orders = Order.where("user_id = ?", uid)

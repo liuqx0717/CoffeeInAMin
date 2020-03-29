@@ -1,6 +1,21 @@
-= form_tag(controller: :session, action: :login) do
-  = label_tag :email, "Email"
-  = text_field_tag :email
-  = label_tag :password, "Password"
-  = password_field_tag :password
-  = submit_tag "Login"
+- content_for :head do
+  :javascript
+    function google_onSignIn(googleUser) {
+      var id_token = googleUser.getAuthResponse().id_token;
+      document.getElementById("id_token").value = id_token;
+      document.getElementById("login-google-button").click();
+    }
+
+
+= form_with(url: "/session/login", method: "post", local: true) do |f|
+  = f.label :email, "Email"
+  = f.text_field :email
+  = f.label :password, "Password"
+  = f.password_field :password
+  = f.submit "Login"
+
+= form_with(url: "/session/login-google", method: "post", local: true) do |f|
+  = f.text_field :id_token, style: "display: none;"
+  = f.submit "", id: "login-google-button", style: "display: none;"
+
+.g-signin2(data-onsuccess="google_onSignIn")
