@@ -1,5 +1,6 @@
 require 'net/http'
 
+
 class SessionController < ApplicationController
     def login
         user = User.where(email: params[:email]).take
