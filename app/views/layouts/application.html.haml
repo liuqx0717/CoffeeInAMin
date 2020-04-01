@@ -13,21 +13,15 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' 
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
+    = stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    = stylesheet_link_tag "business-casual.min"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i"
+    %script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+    %script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js")
+
     %script(src="https://apis.google.com/js/platform.js")
     %meta(name="google-signin-client_id" content="575126619055-f79ettge14ha9aph5avt0v9muh22fssa.apps.googleusercontent.com")/
-
-    :javascript
-      //function signOut() {
-        //document.cookie = "user_id=; expires = Thu, 01 Jan 1970 00:00:00 GMT";
-        //google_signOut();
-      //}
-
-      //function google_signOut() {
-        //var auth2 = gapi.auth2.getAuthInstance();
-        //auth2.signOut().then(function () {
-          ////alert('Google user signed out.');
-        //});
-      //}
 
     = yield :head
 
@@ -40,4 +34,30 @@
     = link_to 'Orders', "/orders" if cookies.signed[:user_id]
     = link_to 'Profile', "/users/" + cookies.signed[:user_id].to_s if cookies.signed[:user_id]
     = link_to 'Shops', "/shops" if cookies.signed[:user_id]
-    = yield 
+
+    %nav#mainNav.navbar.navbar-expand-lg.navbar-dark.py-lg-4
+      .container
+        %a.navbar-brand.text-uppercase.text-expanded.font-weight-bold.d-lg-none{:href => "#"} Start Bootstrap
+        %button.navbar-toggler{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarResponsive.collapse.navbar-collapse
+          %ul.navbar-nav.mx-auto
+            %li.nav-item.active.px-lg-4
+              %a.nav-link.text-uppercase.text-expanded{:href => "index.html"}
+                Home
+                %span.sr-only (current)
+            %li.nav-item.px-lg-4
+              %a.nav-link.text-uppercase.text-expanded{:href => "about.html"} About
+            %li.nav-item.px-lg-4
+              %a.nav-link.text-uppercase.text-expanded{:href => "products.html"} Products
+            %li.nav-item.px-lg-4
+              %a.nav-link.text-uppercase.text-expanded{:href => "store.html"} Store
+
+    = yield
+
+    %footer.footer.text-faded.text-center.py-5
+    .container
+      %p.m-0.small Copyright © Your Website 2019
+
+
+

@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
         uid = cookies.signed[:user_id]
         @user_type = User.find(uid).user_type
         if @user_type == 0
-            @orders = Order.where("user_id = ?", uid)
+            @orders = Order.where("user_id = ? and status = ?", uid, "COMPLETED")
         else
             @orders = Order.joins("INNER JOIN shops ON orders.shop_id = shops.id AND shops.owner_id = " + uid.to_s)
         end
@@ -23,8 +23,9 @@ class OrdersController < ApplicationController
         @order.shop_id = item.shop_id
         @order.item_id = item.id
         @order.user_id = cookies.signed[:user_id]
+        @order.status = "NEW"
         @order.save
-        redirect_to root_path
+        redirect_to "/orders/"+ @order.id.to_s + "/checkout"
     end
 
     def show
@@ -39,7 +40,7 @@ class OrdersController < ApplicationController
         @order = Order.find params[:id]
         raise "Please, check registration errors" unless @order.valid?
         process_payment
-        # @order.status = 'COMPLETED'
+        @order.status = 'COMPLETED'
         @order.save
         redirect_to @order, notice: 'Order was successfully created.'
     end
