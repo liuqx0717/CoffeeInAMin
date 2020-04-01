@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'signin', to: 'signin#index'
   get 'signup', to: 'signup#index'
   get 'shops', to: 'shops#index'
+  get 'orders', to: 'orders#index'
 
   get 'shops/:id/menu', to: 'shops#menu'
   post 'orders/:id/checkout', to: 'orders#checkout'

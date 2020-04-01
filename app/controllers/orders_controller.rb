@@ -1,6 +1,18 @@
 class OrdersController < ApplicationController
     # You need to pass item_id as query parameter
     # when using POST /orders
+
+    def index
+        uid = cookies.signed[:user_id]
+        @user_type = User.find(uid).user_type
+        if @user_type == 0
+            @orders = Order.where("user_id = ?", uid)
+        else
+            @orders = Order.joins("INNER JOIN shops ON orders.shop_id = shops.id AND shops.owner_id = " + uid.to_s)
+        end
+    end
+
+
     def create
         item = Item.find_by(id: params[:item_id])
 
@@ -46,15 +58,6 @@ class OrdersController < ApplicationController
         params.require(:order).permit(:full_name, :telephone)
     end
 
-    def index
-        uid = cookies.signed[:user_id]
-        @user_type = User.find(uid).user_type
-        if @user_type == 0
-            @orders = Order.where("user_id = ?", uid)
-        else
-            @orders = Order.joins("INNER JOIN shops ON orders.shop_id = shops.id AND shops.owner_id = " + uid.to_s)
-        end
-    end
 
     def process_payment
         Stripe.api_key = "sk_test_7sWbbjSHC46cm4udZL48y75D00Pvpg8zE5"
