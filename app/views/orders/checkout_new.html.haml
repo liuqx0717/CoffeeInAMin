@@ -9,4 +9,4 @@
     = f.text_field :telephone, class: "form-control"
   .actions(style="margin-top: 15px")
     %script.stripe-button{ src: "https://checkout.stripe.com/checkout.js",
-          data: {amount: @order.price.to_i*100, description: @order.name, key: Rails.application.credentials.stripe_publishable_key}}
+          data: {amount: @order.price.to_i*100, description: @order.name, key: "#{Rails.application.credentials.stripe_publishable_key}"}}
