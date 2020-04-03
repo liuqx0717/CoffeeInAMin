@@ -1,9 +1,9 @@
-= form_with(url: "/shops", method: "post") do |f|
+= form_with(url: "/shops", method: "post", class: "text-white") do |f|
   = f.label :name, "Name"
-  = f.text_field :name
+  = f.text_field :name, class: "form-control"
   = f.label :address, "Address"
-  = f.text_field :address 
+  = f.text_field :address , class: "form-control"
   = f.label :description, "Description"
-  = f.text_field :description
+  = f.text_field :description, class: "form-control"
   = f.hidden_field :owner_id, value: cookies.signed[:user_id]
-  = f.submit "Add"
+  = f.submit "Add", class: "btn btn-primary", style: "margin-top: 20px; margin-left: 5px"

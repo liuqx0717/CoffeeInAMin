@@ -1,11 +1,12 @@
-= form_with(url: "/users/" + @user.id.to_s, method: "put") do |f|
+= form_with(url: "/users/" + @user.id.to_s, method: "put", class: "text-white") do |f|
   = label_tag :email, "Email"
-  = f.text_field :email, value: @user.email
+  = f.text_field :email, value: @user.email, class: "form-control"
   = f.label :password, "Password"
-  = f.password_field :password, value: @user.password
+  = f.password_field :password, value: @user.password, class: "form-control"
   = f.label :name, "Name"
-  = f.text_field :name, value: @user.name
-  = f.submit "Update"
+  = f.text_field :name, value: @user.name, class: "form-control"
+  = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"
 
-= link_to "Create a shop", "/shops/new" if @user.user_type == 1 && @shop == nil
-= link_to @shop.name, "/shops/" + @shop.id.to_s if @shop
+= link_to "Create a shop", "/shops/new", {:class => "btn btn-inverse"} if @user.user_type == 1 && @shop == nil
+= link_to @shop.name, "/shops/" + @shop.id.to_s, {:class => "btn btn-inverse",
+  :style => "font-family: 'Cairo'; font-size: 15px"} if @shop

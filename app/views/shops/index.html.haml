@@ -1,6 +1,6 @@
-%h1 Shops in CoffeeInAMin
+%h1.text-white Shops in CoffeeInAMin
 
-%table
+%table.text-white
   %thead
     %tr
       %th Name
@@ -12,8 +12,8 @@
   %tbody
     - @shops.zip(@routes).each do |shop,route|
       %tr
-        %td= link_to shop.name, "/shops/" + shop.id.to_s
-        %td= shop.address
+        %td= link_to shop.name, "/shops/" + shop.id.to_s, {:class => "coffeebutton"}
+        %td{:class=>""}= shop.address
         %td= shop.description
         %td= route.distance
         %td= route.duration

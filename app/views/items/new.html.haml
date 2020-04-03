@@ -1,11 +1,11 @@
-= form_with(url: "/items", method: "post") do |f|
+= form_with(url: "/items", method: "post", class: "text-white") do |f|
   = label_tag :name, "Name"
-  = f.text_field :name
+  = f.text_field :name, class: "form-control"
   = label_tag :description, "Description"
-  = f.text_field :description
+  = f.text_field :description, class: "form-control"
   = label_tag :price, "Price"
-  = f.text_field :price
+  = f.text_field :price, class: "form-control"
   -#= label_tag :shop_id, "Shop ID"
   -#= f.text_field :shop_id, value: params[:shop_id]
   = f.hidden_field :shop_id, value: params[:shop_id]
-  = f.submit "Add"
+  = f.submit "Add", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"

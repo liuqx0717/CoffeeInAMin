@@ -1,9 +1,9 @@
-%table
+%table.text-white
   %tbody
     %tr
-      %td Name
-      %td Price
-      %td Shop
+      %td{:style => "font-weight: bold"} Name
+      %td{:style => "font-weight: bold"} Price
+      %td{:style => "font-weight: bold"} Shop
     - @orders.each do |order|
       %tr
         %td= link_to order.name, "/items/" + order.item_id.to_s

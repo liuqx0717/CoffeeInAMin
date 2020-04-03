@@ -6,8 +6,8 @@ class ShopsController < ApplicationController
 
     def index
         @shops = Shop.all
-        result = Geocoder.search(request.ip)
-        # result = Geocoder.search('158.222.139.241')
+        #result = Geocoder.search(request.ip)
+        result = Geocoder.search('158.222.139.241')
         matrix = GoogleDistanceMatrix::Matrix.new
         lat_lng = GoogleDistanceMatrix::Place.new lng: result.first.coordinates[1], lat: result.first.coordinates[0]
         matrix.origins << lat_lng
