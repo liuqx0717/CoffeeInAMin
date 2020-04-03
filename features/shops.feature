@@ -9,11 +9,12 @@ Feature: Create shop as a business user
   I should see shops name
 
     Scenario:
+      Given my IP address is "158.222.139.241"
       When I am on the "log in" page
       And I enter the correct credential for global business user
       And I click the profile link for "business"
       And I click the new shops link
-      And I enter the shop details with name "Shop name"
+      And I enter the shop details with name "Blue Java"
       And I click the "shops" link
-      Then I should see "Shop name"
+      Then I should see "Blue Java"
 

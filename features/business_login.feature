@@ -3,7 +3,7 @@ Feature: log in for business
   As a business user
   After I register
   when I enter the correct credentials
-  I will be able to login
+  I will be able to login and see sign out button indicating I'm logged in
   when I enter the incorrect credentials
   I will get a message asking to register
 
@@ -11,7 +11,7 @@ Feature: log in for business
     Given I create a valid account for business
     When I am on the "log in" page
     And I enter the correct credential for business
-    Then I should see "Logged In!! Welcome :)"
+    Then I should see "Sign out"
 
   Scenario: log in with incorrect credentials
     When I am on the "log in" page

@@ -34,12 +34,7 @@ class SessionController < ApplicationController
                 user.password = "<Google>"
                 user.user_type = 0
                 user.save
-
-                user_id = User.where(email: email).take.id
-            else
-                user_id = user.id
             end
-
             cookies.signed[:user_id] = user.id
             redirect_to root_path
         else
