@@ -6,7 +6,7 @@
   %tbody
     - @menu.each do |item|
       %tr
-        %td= link_to item.name, "/items/" + item.id.to_s, {:class => "coffeebutton"}
+        %td= link_to item.name, "/items/" + item.id.to_s, {:class => "coffeebutton text-white"}
         %td= item.price
 
 = link_to "Add", "/items/new?shop_id=" + params[:id].to_s, {:class => "btn btn-inverse", :style => "font-weight:500, font-color: black; font-size: 15px"} if @is_owner
