@@ -38,7 +38,7 @@ Heroku url : https://aqueous-caverns-82625.herokuapp.com/
 
     (a) Customers now have an option to login to the platform using gmail
     
-(2) Navigation to shops:
+(2) Navigation:
 
     (a) Integration with google maps
     (b) Derive coodinates in maps from address of shop
