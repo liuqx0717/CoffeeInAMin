@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
 
 
     def process_payment
-        Stripe.api_key = "sk_test_7sWbbjSHC46cm4udZL48y75D00Pvpg8zE5"
+        Stripe.api_key = Rails.application.credentials.stripe_secret_key
         customer = Stripe::Customer.create email: stripe_params["stripeEmail"],
                                            card: stripe_params["stripeToken"]
 
