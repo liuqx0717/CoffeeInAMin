@@ -8,10 +8,9 @@ Reshma Asharaf Beena (ra3027)
 
 Xin Gu (xg2327)
 
-
 Heroku url : https://aqueous-caverns-82625.herokuapp.com/
 
-Features implemented now:
+**Iteration 1 features**
 
 (1) Register and login (for business user and customer)
 
@@ -24,7 +23,7 @@ Features implemented now:
 	(e) Add menu
 	(f) Update menu
 	(g) See orders placed by customers
-(3)Customer:
+(3) Customer:
 
 	(a) Create account
 	(b) Update account details
@@ -32,3 +31,17 @@ Features implemented now:
 	(d) See menu per shop
 	(e) Place order
 	(f) See orders placed
+	
+**Iteration 2 features**
+
+(1) Google auth for customers:
+    (a) Customers now have an option to login to the platform using gmail
+    
+(2) Navigation to shops:
+    (a) Integration with google maps
+    (b) Derive coodinates in maps from address of shop
+    (c) Help users to navigate from their current location to shop
+    
+(3) Process payment of orders:
+    (a) Stripe integration to process order payment
+     
