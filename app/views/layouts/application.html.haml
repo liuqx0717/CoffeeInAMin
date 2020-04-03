@@ -6,7 +6,8 @@
 
 %html
   %head
-    %title CoffeeInAMin
+
+    %title Coffee In A Minute
     = csrf_meta_tags 
     = csp_meta_tag 
 
@@ -26,38 +27,45 @@
     = yield :head
 
   %body
-    = link_to "Home", "/"
-    = link_to 'Register', new_user_path unless cookies.signed[:user_id]
-    = link_to 'Sign in', session_path unless cookies.signed[:user_id]
-    -# link_to 'Sign out', "/", onClick: "signOut();" if cookies.signed[:user_id]
-    = link_to 'Sign out', "/session/logout" if cookies.signed[:user_id]
-    = link_to 'Orders', "/orders" if cookies.signed[:user_id]
-    = link_to 'Profile', "/users/" + cookies.signed[:user_id].to_s if cookies.signed[:user_id]
-    = link_to 'Shops', "/shops" if cookies.signed[:user_id]
+  
+    %h1.site-heading.text-center.text-white.d-none.d-lg-block
+      %span.site-heading-upper.text-primary.mb-3 A one stop place to all your coffee needs!
+      %span.site-heading-lower Coffee In A Minute
 
     %nav#mainNav.navbar.navbar-expand-lg.navbar-dark.py-lg-4
       .container
-        %a.navbar-brand.text-uppercase.text-expanded.font-weight-bold.d-lg-none{:href => "#"} Start Bootstrap
+        %a.navbar-brand.text-uppercase.text-expanded.font-weight-bold.d-lg-none{:href => "/"} CoffeeInAMin
         %button.navbar-toggler{"aria-controls" => "navbarResponsive", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarResponsive", "data-toggle" => "collapse", :type => "button"}
           %span.navbar-toggler-icon
         #navbarResponsive.collapse.navbar-collapse
           %ul.navbar-nav.mx-auto
-            %li.nav-item.active.px-lg-4
-              %a.nav-link.text-uppercase.text-expanded{:href => "index.html"}
-                Home
-                %span.sr-only (current)
-            %li.nav-item.px-lg-4
-              %a.nav-link.text-uppercase.text-expanded{:href => "about.html"} About
-            %li.nav-item.px-lg-4
-              %a.nav-link.text-uppercase.text-expanded{:href => "products.html"} Products
-            %li.nav-item.px-lg-4
-              %a.nav-link.text-uppercase.text-expanded{:href => "store.html"} Store
+            - if true
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "homepage" && action_name == "index")}
+                = link_to "Home", "/", class: "nav-link text-uppercase text-expanded"
+            - unless cookies.signed[:user_id]
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "users" && action_name == "new")}
+                = link_to "Register", new_user_path, class: "nav-link text-uppercase text-expanded"
+            - unless cookies.signed[:user_id]
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "session" && action_name == "index")}
+                = link_to "Sign in", session_path, class: "nav-link text-uppercase text-expanded"
+            - if cookies.signed[:user_id]
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "session" && action_name == "logout")}
+                = link_to "Sign out", "/session/logout", class: "nav-link text-uppercase text-expanded"
+            - if cookies.signed[:user_id]
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "orders")}
+                = link_to "Orders", "/orders", class: "nav-link text-uppercase text-expanded"
+            - if cookies.signed[:user_id]
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "users" && action_name != "new")}
+                = link_to "Profile", "/users/" + cookies.signed[:user_id].to_s, class: "nav-link text-uppercase text-expanded"
+            - if cookies.signed[:user_id]
+              %li.nav-item.px-lg-4{:class => ("active" if controller_name == "shops" || controller_name == "items")}
+                = link_to "Shops", "/shops", class: "nav-link text-uppercase text-expanded"
 
     = yield
 
     %footer.footer.text-faded.text-center.py-5
-    .container
-      %p.m-0.small Copyright © Your Website 2019
+      .container
+        %p.m-0.small Copyright © CoffeeInAMin 2020
 
 
 
