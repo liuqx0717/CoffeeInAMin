@@ -35,13 +35,16 @@ Heroku url : https://aqueous-caverns-82625.herokuapp.com/
 **Iteration 2 features**
 
 (1) Google auth for customers:
+
     (a) Customers now have an option to login to the platform using gmail
     
 (2) Navigation to shops:
+
     (a) Integration with google maps
     (b) Derive coodinates in maps from address of shop
     (c) Help users to navigate from their current location to shop
     
 (3) Process payment of orders:
+
     (a) Stripe integration to process order payment
      
