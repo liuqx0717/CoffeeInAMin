@@ -6,6 +6,7 @@ class ShopsController < ApplicationController
 
     def index
         @shops = Shop.all
+
         # result = Geocoder.search(request.ip)
         result = Geocoder.search('158.222.139.241')
         matrix = GoogleDistanceMatrix::Matrix.new

@@ -6,16 +6,17 @@
       document.getElementById("login-google-button").click();
     }
 
-
-= form_with(url: "/session/login", method: "post", local: true) do |f|
+= form_with(url: "/session/login", method: "post", local: true, style: "margin-top:20px", class: "text-white") do |f|
   = f.label :email, "Email"
-  = f.text_field :email
+  = f.text_field :email, class: "form-control"
   = f.label :password, "Password"
-  = f.password_field :password
-  = f.submit "Login"
+  = f.password_field :password, class: "form-control"
+  = f.submit "Login", class: "btn btn-primary", style: "margin-top: 20px; margin-left: 5px"
 
-= form_with(url: "/session/login-google", method: "post", local: true) do |f|
+
+= form_with(url: "/session/login-google", method: "post", local: true, style: "margin-top:20px") do |f|
   = f.text_field :id_token, style: "display: none;"
-  = f.submit "", id: "login-google-button", style: "display: none;"
+  = f.submit "", id: "login-google-button", style: "display: none; margin-top: 20px;"
 
-.g-signin2(data-onsuccess="google_onSignIn")
+.g-signin2(data-onsuccess="google_onSignIn" data-width="200" data-height="30"
+  data-longtitle="true" style="margin-top:20px; margin-bottom: 20px")

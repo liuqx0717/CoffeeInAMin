@@ -1,11 +1,11 @@
-= form_with(url: "/items/" + @item.id.to_s, method: "put") do |f|
+= form_with(url: "/items/" + @item.id.to_s, method: "put", class: "text-white") do |f|
   = label_tag :name, "Name"
-  = f.text_field :name, value: @item.name
+  = f.text_field :name, value: @item.name, class: "form-control"
   = label_tag :description, "Description"
-  = f.text_field :description, value: @item.description
+  = f.text_field :description, value: @item.description, class: "form-control"
   = label_tag :price, "price"
-  = f.text_field :price, value: @item.price
-  = f.submit "Update" if @is_owner
+  = f.text_field :price, value: @item.price, class: "form-control"
+  = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
 
 = form_with(url: "/orders?item_id=" + @item.id.to_s, method: "post") do |f|
-  = f.submit "Order Now" if @user_type == 0
+  = f.submit "Order Now", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @user_type == 0
