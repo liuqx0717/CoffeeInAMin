@@ -8,5 +8,4 @@
   = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"
 
 = link_to "Create a shop", "/shops/new", {:class => "btn btn-inverse formbutton"} if @user.user_type == 1 && @shop == nil
-= link_to @shop.name, "/shops/" + @shop.id.to_s, {:class => "btn btn-inverse",
-  :style => "font-family: 'Cairo'; font-size: 15px"} if @shop
+= link_to @shop.name, "/shops/" + @shop.id.to_s, {:class => "btn btn-inverse formbutton", :style => "font-family: 'Cairo'; font-size: 15px"} if @shop

@@ -50,6 +50,11 @@ Heroku url : https://radiant-hollows-88176.herokuapp.com/
 
     (a) Stripe integration to process order payment
      
+     
+ (4) Cucumber tests for features
+ 
+ (5) css
+ 
 Note:
     To run the tests, you need to install Qt5 development package and Qt5 Webkit
     package. (e.g. qt5-devel and qt5-qtwebkit-devel in Fedora)
