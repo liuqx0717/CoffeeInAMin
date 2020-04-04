@@ -123,13 +123,13 @@ And(/^enter user details$/) do
 
   fill_in 'Full name', with: @customer_user.name
   fill_in 'Telephone', with: '12345678'
-  sleep(5)
-  # find('button.stripe-button-el').click
+  sleep(3)
+  find('button.stripe-button-el').click
   # click_button 'Pay with Card'
   # click_on(class: '.stripe-button-el')
   # # find('.stripe-button-el').click
-  elem = page.driver.find_element(:text, "Pay with Card")
-  puts(elem)
+  #elem = page.driver.find_element(:text, "Pay with Card")
+  #puts(elem)
 end
 
 And(/^I fill in card details in stripe/) do
