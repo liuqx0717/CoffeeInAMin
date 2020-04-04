@@ -10,4 +10,5 @@
   = link_to "Menu", "/shops/" + @shop.id.to_s + "/menu", {:class => "btn btn-inverse formbutton", :style => "margin-top: 15px; margin-bottom: 15px; margin-left: 5px"}
 
 = image_tag "https://maps.google.com/maps/api/staticmap?zoom=17&size=400x300&markers=#{@shop.latitude}%2C#{@shop.longitude}&key=#{Rails.application.credentials.google_maps_api_key}"
+%br
 = link_to "Navigate", "https://www.google.com/maps/dir/?api=1&origin=#{@results.first.coordinates[0]}%2C#{@results.first.coordinates[1]}&destination=#{@shop.address}&travelmode=walking", target: "_blank", class: "btn btn-large btn-primary"
