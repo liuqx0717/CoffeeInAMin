@@ -51,6 +51,5 @@ Heroku url : https://aqueous-caverns-82625.herokuapp.com/
     (a) Stripe integration to process order payment
      
 Note:
-    All of the new features are tested. To run the tests, you need to install
-    Qt5 development package and Qt5 Webkit package. (e.g. qt5-devel and 
-    qt5-qtwebkit-devel in Fedora)
+    To run the tests, you need to install Qt5 development package and Qt5 Webkit
+    package. (e.g. qt5-devel and qt5-qtwebkit-devel in Fedora)
