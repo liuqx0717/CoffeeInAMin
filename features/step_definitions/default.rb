@@ -115,32 +115,22 @@ And(/^I place the order$/) do
 end
 
 And(/^enter user details$/) do
-  # sleep(5)
-  # click_button 'Pay with Card'
-  # page.driver.find_element(css: '.stripe-button-el')
-  #
-  #
-
   fill_in 'Full name', with: @customer_user.name
   fill_in 'Telephone', with: '12345678'
   sleep(3)
   find('button.stripe-button-el').click
-  # click_button 'Pay with Card'
-  # click_on(class: '.stripe-button-el')
-  # # find('.stripe-button-el').click
-  #elem = page.driver.find_element(:text, "Pay with Card")
-  #puts(elem)
+
 end
 
 And(/^I fill in card details in stripe/) do
-  sleep(0.1) until page.evaluate_script('$.active') == 0
-  @stripe_iframe = all('iframe[name=stripe_checkout_app]').last
-  within_frame @stripe_iframe do
+  sleep(3)
+  page.within_frame(find("body")) do
     fill_in 'Email', with: 'some_email@email.com'
     fill_in 'Card number', with: '4242 4242 4242 4242'
     fill_in 'CVC', with: '123'
     fill_in 'cc-exp', with: '12/2022'
   end
+
 end
 
 And(/^I submit the stripe form$/) do
