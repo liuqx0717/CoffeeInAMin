@@ -34,17 +34,23 @@ Heroku url : https://aqueous-caverns-82625.herokuapp.com/
 	
 **Iteration 2 features**
 
-(1) Google auth for customers:
+(1) Improvement of user authentication:
 
-    (a) Customers now have an option to login to the platform using gmail
+    (a) The passwords are saved using SHA256, instead of plain text
+    (b) Customers now have an option to login to the platform using Google accounts
     
 (2) Navigation:
 
     (a) Integration with google maps
-    (b) Derive coodinates in maps from address of shop
+    (b) Derive coodinates in maps from address of shop, and calculate the distance
+        from the user
     (c) Help users to navigate from their current location to shop
     
 (3) Process payment of orders:
 
     (a) Stripe integration to process order payment
      
+Note:
+    All of the new features are tested. To run the tests, you need to install
+    Qt5 development package and Qt5 Webkit package. (e.g. qt5-devel and 
+    qt5-qtwebkit-devel in Fedora)
