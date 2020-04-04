@@ -6,5 +6,5 @@ Feature: See the homepage
 
   Scenario: log in with right credentials
     Given I am on the "home" page
-    Then I should see "CoffeInAMin : A one stop place to all your coffee needs!"
+    Then I should see "Tired of waiting for 10 miniutes after ordering a cup of coffee"
 
