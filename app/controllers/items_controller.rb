@@ -16,6 +16,11 @@ class ItemsController < ApplicationController
     end
 
     def show
+        puts(cookies.signed[:user_id])
+        if cookies.signed[:user_id] == nil
+            render "items/login_issues"
+            return
+        end
         @item = Item.find params[:id]
         shop = Shop.find @item.shop_id
         @is_owner = shop.owner_id.to_s == cookies.signed[:user_id].to_s
