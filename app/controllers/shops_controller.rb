@@ -26,6 +26,7 @@ class ShopsController < ApplicationController
         @shop.address = params[:address]
         @shop.description = params[:description]
         @shop.owner_id = params[:owner_id]
+        @shop.pic.attach(params[:pic]) unless params[:pic] == nil
         @shop.save
         redirect_to root_path
     end
@@ -33,6 +34,7 @@ class ShopsController < ApplicationController
     def show
         @results = Geocoder.search(request.ip)
         @shop = Shop.find params[:id]
+        @is_owner = cookies.signed[:user_id].to_s == @shop.owner_id.to_s
     end
 
     def update
@@ -40,6 +42,10 @@ class ShopsController < ApplicationController
         @shop.name = params[:name]
         @shop.address = params[:address]
         @shop.description = params[:description]
+        unless params[:pic] == nil
+            @shop.pic.purge if @shop.pic.attached?
+            @shop.pic.attach(params[:pic])
+        end
         @shop.save
         redirect_to "/shops/" + @shop.id.to_s
     end

@@ -1,3 +1,5 @@
+= image_tag url_for(@shop.pic) if @shop.pic.attached?
+
 = form_with(url: "/shops/" + @shop.id.to_s, method: "put", class: "text-white") do |f|
   = label_tag :name, "Name"
   = f.text_field :name, value: @shop.name, class: "form-control"
@@ -5,8 +7,9 @@
   = f.text_field :address, value: @shop.address, class: "form-control"
   = f.label :description, "Description"
   = f.text_field :description, value: @shop.description, class: "form-control"
-  = f.submit "Update", class: "btn btn-primary",
-    style: "margin-top:20px; margin-bottom: 10px" if cookies.signed[:user_id].to_s == @shop.owner_id.to_s
+  = label_tag :pic, "Picture" if @is_owner
+  = f.file_field :pic if @is_owner
+  = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
   = link_to "Menu", "/shops/" + @shop.id.to_s + "/menu", {:class => "btn btn-inverse formbutton", :style => "margin-top: 15px; margin-bottom: 15px; margin-left: 5px"}
 
 = image_tag "https://maps.google.com/maps/api/staticmap?zoom=17&size=400x300&markers=#{@shop.latitude}%2C#{@shop.longitude}&key=#{Rails.application.credentials.google_maps_api_key}"

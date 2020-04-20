@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
         @item.description = params[:description]
         @item.price = params[:price]
         @item.shop_id = params[:shop_id]
-        @item.pic.attach(params[:pic])
+        @item.pic.attach(params[:pic]) unless params[:pic] == nil
         @item.save
         redirect_to root_path
     end

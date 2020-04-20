@@ -8,7 +8,7 @@
   = f.text_field :description, value: @item.description, class: "form-control"
   = label_tag :price, "price"
   = f.text_field :price, value: @item.price, class: "form-control"
-  = label_tag :pic, "Picture"
+  = label_tag :pic, "Picture" if @is_owner
   = f.file_field :pic if @is_owner
   = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
 
