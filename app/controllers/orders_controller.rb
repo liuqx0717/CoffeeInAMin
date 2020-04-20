@@ -4,9 +4,13 @@ class OrdersController < ApplicationController
 
     def index
         uid = cookies.signed[:user_id]
+        if uid == nil
+            render "/login_issues"
+            return
+        end
         @user_type = User.find(uid).user_type
         if @user_type == 0
-            @orders = Order.where("user_id = ? and status = ?", uid, "COMPLETED")
+            @orders = Order.where("user_id = ? and (status = ? or status = ?)", uid, "NEW", "COMPLETED")
         else
             @orders = Order.joins("INNER JOIN shops ON orders.shop_id = shops.id AND shops.owner_id = " + uid.to_s)
         end
@@ -14,6 +18,10 @@ class OrdersController < ApplicationController
 
 
     def create
+        if cookies.signed[:user_id] == nil
+            render "/login_issues"
+            return
+        end
         item = Item.find_by(id: params[:item_id])
 
         @order = Order.new

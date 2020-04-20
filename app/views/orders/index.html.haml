@@ -1,12 +1,21 @@
 %table.text-white
-  %tbody
+  %thead
     %tr
       %td{:style => "font-weight: bold"} Name
       %td{:style => "font-weight: bold"} Price
-      %td{:style => "font-weight: bold"} Shop
+      = tag.td style: "font-weight: bold" do 
+        = "Shop" if @user_type == 0
+        = "User" if @user_type == 1
+      %td{:style => "font-weight: bold"} Status
+  %tbody
     - @orders.each do |order|
       %tr
-        %td= link_to order.name, "/items/" + order.item_id.to_s
+        %td= link_to order.name, "/items/" + order.item_id.to_s, class: "text-white"
         %td= order.price
-        %td= link_to get_name_by_shop_id(order.shop_id), "/shops/" + order.shop_id.to_s
-        = tag.td(link_to(get_name_by_user_id(order.user_id), "/users/" + order.user_id.to_s)) if @user_type == 1
+        = tag.td do 
+          = link_to get_name_by_shop_id(order.shop_id), "/shops/" + order.shop_id.to_s, class: "text-white" if @user_type == 0
+          = get_name_by_user_id(order.user_id) if @user_type == 1
+        = tag.td do
+          = "Completed" if order.status == "COMPLETED"
+          = "Not Paid" if order.status == "NEW" && @user_type == 1
+          = link_to "Pay Now", "/orders/"+ order.id.to_s + "/checkout", class: "text-white" if order.status == "NEW" && @user_type == 0
