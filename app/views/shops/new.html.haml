@@ -6,7 +6,7 @@
   = f.label :description, "Description"
   = f.text_field :description, class: "form-control"
   = f.label :time, "Open Time"
-  = f.text_field :time, value: @shop.time, class: "form-control"
+  = f.text_field :time, class: "form-control"
   = label_tag :pic, "Picture"
   = f.file_field :pic
   = f.hidden_field :owner_id, value: cookies.signed[:user_id]
