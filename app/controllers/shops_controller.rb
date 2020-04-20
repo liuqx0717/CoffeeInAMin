@@ -25,6 +25,7 @@ class ShopsController < ApplicationController
         @shop.name = params[:name]
         @shop.address = params[:address]
         @shop.description = params[:description]
+        @shop.time = params[:time]
         @shop.owner_id = params[:owner_id]
         @shop.pic.attach(params[:pic]) unless params[:pic] == nil
         @shop.save
@@ -42,6 +43,7 @@ class ShopsController < ApplicationController
         @shop.name = params[:name]
         @shop.address = params[:address]
         @shop.description = params[:description]
+        @shop.time = params[:time]
         unless params[:pic] == nil
             @shop.pic.purge if @shop.pic.attached?
             @shop.pic.attach(params[:pic])
