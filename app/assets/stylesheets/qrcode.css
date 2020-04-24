@@ -1,14 +1,9 @@
-// Place all the styles related to the Orders controller here.
-// They will automatically be included in application.css.scss.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-body{
-  width:100%;
-  text-align:center;
+#bodybody{
+    width:100%;
+    text-align:center;
 }
 img{
-  border:0;
+    border:0;
 }
 #main{
   margin: 15px auto;
