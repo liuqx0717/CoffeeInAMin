@@ -38,12 +38,11 @@
             #result
       / webqr_2016
   #footer
-    %h5{:align => "center"}
-      Copyright © 2011
-      %a{:href => "http://www.lazarsoft.info", :target => "_blank"} Lazar Laszlo
+    Copyright © 2011
+    %a{:href => "http://www.lazarsoft.info", :target => "_blank"} Lazar Laszlo
 %canvas#qr-canvas{:height => "600", :width => "800"}
 
-= form_with(url: "/processqr", method: "post", local: true, style: "visibility: hidden") do |f|
+= form_with(url: "/processqr", method: "post", local: true) do |f|
   = f.text_field "order_id"
   = f.submit "Submit", id: "submit_butn"
 
@@ -55,11 +54,12 @@
 
   const interval = setInterval(function() {
     str_list = document.getElementById('result').getElementsByTagName('b')
+    console.log(str_list)
     if (str_list.length > 0) {
       str_ = str_list[0].innerText;
       text = str_.match(/order_id:\d+/i)
       id = str_.match(/\d+/i)
-      if (id.length > 0) {
+      if (id != null && id.length > 0) {
         document.getElementById("order_id").value = id;
         document.getElementById("submit_butn").click();
       }

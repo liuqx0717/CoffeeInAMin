@@ -64,7 +64,7 @@ class OrdersController < ApplicationController
             @qr_info = "This order has been picked up"
         else
             @qr_info = "Success"
-            @order_found.status == "FINISHED"
+            @order_found.status = "FINISHED"
             @order_found.save()
         end
     end
