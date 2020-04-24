@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2020_04_20_050225) do
     t.string "card_token"
     t.string "stripe_email"
     t.string "status"
+    t.string "qr_code"
   end
 
   create_table "shops", force: :cascade do |t|

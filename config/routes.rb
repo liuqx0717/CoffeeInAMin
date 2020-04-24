@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   get 'signup', to: 'signup#index'
   get 'shops', to: 'shops#index'
   get 'orders', to: 'orders#index'
+  get 'qrcode', to: 'orders#qrcode'
+
+  post 'processqr', to: 'orders#process_qrcode'
 
   get 'shops/:id/menu', to: 'shops#menu'
   post 'orders/:id/checkout', to: 'orders#checkout'

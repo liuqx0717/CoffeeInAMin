@@ -9,6 +9,12 @@ gem 'rails', '~> 5.2.3'
 
 gem 'rake'
 
+# Use qrio as QR code decoder
+gem 'qrio', '~> 0.0.1'
+# Use rqrcode as QR code generator
+gem 'rqrcode'
+gem 'chunky_png'
+
 gem 'haml-rails'
 
 gem 'stripe'

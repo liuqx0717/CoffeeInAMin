@@ -1,3 +1,26 @@
+-#%table
+-#  - @qr.modules.each_index do |x|
+-#    %tr
+-#      - @qr.modules.each_index do |y|
+-#        - if @qr.dark?(x,y)
+-#          %td.black
+-#        - else
+-#          %td.white
+- if @user_type == 0
+  %h5.text-white QR Code for most recent order
+  %img(src= @png)
+- else
+  %div.text-center.center-button
+    :javascript
+        function to_qrcode()
+        {
+          location.href = "qrcode";
+        }
+    -# = button_to("Scan QR Code", { action: "qrcode"}, class:"btn.btn-light center-block")
+    %button.btn.btn-light.center-block{:type => "button", :onclick => "to_qrcode()"} Scan QR Code
+
+
+%h5.text-white Recent Orders
 %table.text-white
   %thead
     %tr
@@ -16,6 +39,7 @@
           = link_to get_name_by_shop_id(order.shop_id), "/shops/" + order.shop_id.to_s, class: "text-white" if @user_type == 0
           = get_name_by_user_id(order.user_id) if @user_type == 1
         = tag.td do
-          = "Completed" if order.status == "COMPLETED"
+          = "Paid" if order.status == "COMPLETED"
           = "Not Paid" if order.status == "NEW" && @user_type == 1
+          = "Finished" if order.status == "FINISHED" && @user_type == 1
           = link_to "Pay Now", "/orders/"+ order.id.to_s + "/checkout", class: "text-white" if order.status == "NEW" && @user_type == 0

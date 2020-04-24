@@ -1,0 +1,67 @@
+
+- content_for :head do
+  %script(src="https://webqr.com/llqrcode.js")
+  %script(src="https://apis.google.com/js/plusone.js")
+  %script(src="https://webqr.com/webqr.js")
+  -# = javascript_include_tag "javascripts/qrcode.js"
+  -# = javascript_include_tag 'qrcode', 'data-turbolinks-track': 'reload'
+  -# = stylesheet_link_tag "stylesheets/qrcode.css"
+  = stylesheet_link_tag    'qrcode', media: 'all', 'data-turbolinks-track': 'reload'
+  -#%script{:src => "assets/stylesheets/qrcodes.css", :type => "stylesheet"}
+  -#%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  -#%title Web QR
+  -#%script{:src => "https://webqr.com/llqrcode.js", :type => "text/javascript"}
+  -#%script{:src => "https://apis.google.com/js/plusone.js", :type => "text/javascript"}
+  -#%script{:src => "https://webqr.com/webqr.js", :type => "text/javascript"}
+
+
+#header
+  %div{:style => "position:relative;top:+20px;left:0px;"}
+    %p#mp1
+      QR Code scanner
+  = succeed "\u{a0}" do
+    #mainbody
+      %table.tsel{:border => "0", :width => "100%"}
+        %tr
+          %td{:align => "center", :valign => "top", :width => "50%"}
+            %table.tsel{:border => "0"}
+              %tr
+                %td
+                  %img#webcamimg.selector{:align => "left", :onclick => "setwebcam()", :src => "https://webqr.com/vid.png"}/
+                %td
+                  %img#qrimg.selector{:align => "right", :onclick => "setimg()", :src => "https://webqr.com/cam.png"}/
+              %tr
+                %td{:align => "center", :colspan => "2"}
+                  #outdiv
+        %tr
+          %td{:align => "center", :colspan => "3"}
+            #result
+      / webqr_2016
+  #footer
+    %h5{:align => "center"}
+      Copyright © 2011
+      %a{:href => "http://www.lazarsoft.info", :target => "_blank"} Lazar Laszlo
+%canvas#qr-canvas{:height => "600", :width => "800"}
+
+= form_with(url: "/processqr", method: "post", local: true, style: "visibility: hidden") do |f|
+  = f.text_field "order_id"
+  = f.submit "Submit", id: "submit_butn"
+
+:javascript
+  load();
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-24451557-1']);
+  _gaq.push(['_trackPageview']);
+
+  const interval = setInterval(function() {
+    str_list = document.getElementById('result').getElementsByTagName('b')
+    if (str_list.length > 0) {
+      str_ = str_list[0].innerText;
+      text = str_.match(/order_id:\d+/i)
+      id = str_.match(/\d+/i)
+      if (id.length > 0) {
+        document.getElementById("order_id").value = id;
+        document.getElementById("submit_butn").click();
+      }
+    }
+  }, 2000);
