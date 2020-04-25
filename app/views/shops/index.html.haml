@@ -10,12 +10,12 @@
       %th Duration(min)
 
   %tbody
-    - @shops.zip(@routes).each do |shop,route|
+    - @shops.each do |shop|
       %tr
         %td= link_to shop.name, "/shops/" + shop.id.to_s, {:class => "coffeebutton text-white "}
         %td{:class=>""}= shop.address
         %td= shop.description
-        %td= route.distance
-        %td= route.duration
+        %td= @routes[shop].distance
+        %td= @routes[shop].duration
 
 

@@ -6,17 +6,19 @@ class ShopsController < ApplicationController
 
     def index
         @shops = Shop.all
-        result = Geocoder.search(request.ip)
-        matrix = GoogleDistanceMatrix::Matrix.new
+        ip = request.ip
+        ip = "74.71.4.205" if ip == "127.0.0.1" || ip == "::1"
+        result = Geocoder.search(ip)
         lat_lng = GoogleDistanceMatrix::Place.new lng: result.first.coordinates[1], lat: result.first.coordinates[0]
-        matrix.origins << lat_lng
-        @routes = []
+        @routes = {}
         for shop in @shops
+            matrix = GoogleDistanceMatrix::Matrix.new
+            matrix.origins << lat_lng
             dest_address = GoogleDistanceMatrix::Place.new lng: shop.longitude, lat: shop.latitude
             matrix.destinations << dest_address
             route_from_map = matrix.shortest_route_by_distance_to(dest_address)
-            @route = CustomRoutes.new((route_from_map.distance_in_meters / 1609.344).round(2), (route_from_map.duration_in_seconds / 60).round(2))
-            @routes.append(@route)
+            route = CustomRoutes.new((route_from_map.distance_in_meters / 1609.344).round(2), (route_from_map.duration_in_seconds / 60).round(2))
+            @routes[shop] = route
         end
     end
 
