@@ -20,6 +20,9 @@ class ShopsController < ApplicationController
             route = CustomRoutes.new((route_from_map.distance_in_meters / 1609.344).round(2), (route_from_map.duration_in_seconds / 60).round(2))
             @routes[shop] = route
         end
+        @shops.sort do |shop|
+            @routes[shop].distance
+        end
     end
 
     def create
