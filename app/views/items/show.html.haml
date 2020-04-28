@@ -1,16 +1,21 @@
-= link_to "Go to shop: " + @shop.name, "/shops/" + @shop.id.to_s, class: "text-white"
-= image_tag url_for(@item.pic) if @item.pic.attached?
+.row.justify-content-center
+  = link_to "Go to shop: " + @shop.name, "/shops/" + @shop.id.to_s, class: "text-white"
+.row.justify-content-center
+  = image_tag url_for(@item.pic) if @item.pic.attached?
 
-= form_with(url: "/items/" + @item.id.to_s, method: "put", class: "text-white") do |f|
-  = label_tag :name, "Name"
-  = f.text_field :name, value: @item.name, class: "form-control"
-  = label_tag :description, "Description"
-  = f.text_field :description, value: @item.description, class: "form-control"
-  = label_tag :price, "price"
-  = f.text_field :price, value: @item.price, class: "form-control"
-  = label_tag :pic, "Picture" if @is_owner
-  = f.file_field :pic if @is_owner
-  = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = form_with(url: "/items/" + @item.id.to_s, method: "put", class: "text-white") do |f|
+      = label_tag :name, "Name"
+      = f.text_field :name, value: @item.name, class: "form-control"
+      = label_tag :description, "Description"
+      = f.text_field :description, value: @item.description, class: "form-control"
+      = label_tag :price, "price"
+      = f.text_field :price, value: @item.price, class: "form-control"
+      = label_tag :pic, "Picture" if @is_owner
+      = f.file_field :pic if @is_owner
+      = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
 
-= form_with(url: "/orders?item_id=" + @item.id.to_s, method: "post", local: true) do |f|
-  = f.submit "Order Now", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @user_type == 0
+.row.justify-content-center
+  = form_with(url: "/orders?item_id=" + @item.id.to_s, method: "post", local: true) do |f|
+    = f.submit "Order Now", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @user_type == 0

@@ -1,19 +1,25 @@
-= image_tag url_for(@shop.pic) if @shop.pic.attached?
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = image_tag url_for(@shop.pic) if @shop.pic.attached?
 
-= form_with(url: "/shops/" + @shop.id.to_s, method: "put", class: "text-white") do |f|
-  = label_tag :name, "Name"
-  = f.text_field :name, value: @shop.name, class: "form-control"
-  = f.label :address, "Address"
-  = f.text_field :address, value: @shop.address, class: "form-control"
-  = f.label :description, "Description"
-  = f.text_field :description, value: @shop.description, class: "form-control"
-  = f.label :time, "Open Time"
-  = f.text_field :time, value: @shop.time, class: "form-control"
-  = label_tag :pic, "Picture" if @is_owner
-  = f.file_field :pic if @is_owner
-  = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
-  = link_to "Menu", "/shops/" + @shop.id.to_s + "/menu", {:class => "btn btn-inverse formbutton", :style => "margin-top: 15px; margin-bottom: 15px; margin-left: 5px"}
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = form_with(url: "/shops/" + @shop.id.to_s, method: "put", class: "text-white") do |f|
+      = label_tag :name, "Name"
+      = f.text_field :name, value: @shop.name, class: "form-control"
+      = f.label :address, "Address"
+      = f.text_field :address, value: @shop.address, class: "form-control"
+      = f.label :description, "Description"
+      = f.text_field :description, value: @shop.description, class: "form-control"
+      = f.label :time, "Open Time"
+      = f.text_field :time, value: @shop.time, class: "form-control"
+      = label_tag :pic, "Picture" if @is_owner
+      = f.file_field :pic if @is_owner
+      = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px" if @is_owner
+      = link_to "Menu", "/shops/" + @shop.id.to_s + "/menu", {:class => "btn btn-inverse formbutton", :style => "margin-top: 15px; margin-bottom: 15px; margin-left: 5px"}
 
-= image_tag "https://maps.google.com/maps/api/staticmap?zoom=17&size=400x300&markers=#{@shop.latitude}%2C#{@shop.longitude}&key=#{Rails.application.credentials.google_maps_api_key}"
-%br
-= link_to "Navigate", "https://www.google.com/maps/dir/?api=1&origin=#{@results.first.coordinates[0]}%2C#{@results.first.coordinates[1]}&destination=#{@shop.address}&travelmode=walking", target: "_blank", class: "btn btn-large btn-primary"
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = image_tag "https://maps.google.com/maps/api/staticmap?zoom=17&size=400x300&markers=#{@shop.latitude}%2C#{@shop.longitude}&key=#{Rails.application.credentials.google_maps_api_key}"
+    %br
+    = link_to "Navigate", "https://www.google.com/maps/dir/?api=1&origin=#{@results.first.coordinates[0]}%2C#{@results.first.coordinates[1]}&destination=#{@shop.address}&travelmode=walking", target: "_blank", class: "btn btn-large btn-primary"

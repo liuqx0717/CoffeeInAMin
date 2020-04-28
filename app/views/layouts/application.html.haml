@@ -24,6 +24,12 @@
     %script(src="https://apis.google.com/js/platform.js")
     %meta(name="google-signin-client_id" content="575126619055-f79ettge14ha9aph5avt0v9muh22fssa.apps.googleusercontent.com")/
 
+    :css
+      input[type=text],input[type=text]:focus, input[type=password], input[type=password]:focus {
+        background-color: transparent;
+        color: white
+      }
+
     = yield :head
 
   %body

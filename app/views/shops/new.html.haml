@@ -1,13 +1,15 @@
-= form_with(url: "/shops", method: "post", class: "text-white") do |f|
-  = f.label :name, "Name"
-  = f.text_field :name, class: "form-control"
-  = f.label :address, "Address"
-  = f.text_field :address , class: "form-control"
-  = f.label :description, "Description"
-  = f.text_field :description, class: "form-control"
-  = f.label :time, "Open Time"
-  = f.text_field :time, class: "form-control"
-  = label_tag :pic, "Picture"
-  = f.file_field :pic
-  = f.hidden_field :owner_id, value: cookies.signed[:user_id]
-  = f.submit "Add", class: "btn btn-primary", style: "margin-top: 20px; margin-left: 5px"
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = form_with(url: "/shops", method: "post", class: "text-white") do |f|
+      = f.label :name, "Name"
+      = f.text_field :name, class: "form-control"
+      = f.label :address, "Address"
+      = f.text_field :address , class: "form-control"
+      = f.label :description, "Description"
+      = f.text_field :description, class: "form-control"
+      = f.label :time, "Open Time"
+      = f.text_field :time, class: "form-control"
+      = label_tag :pic, "Picture"
+      = f.file_field :pic
+      = f.hidden_field :owner_id, value: cookies.signed[:user_id]
+      = f.submit "Add", class: "btn btn-primary", style: "margin-top: 20px; margin-left: 5px"

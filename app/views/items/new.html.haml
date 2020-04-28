@@ -1,13 +1,15 @@
-= form_with(url: "/items", method: "post", class: "text-white") do |f|
-  = label_tag :name, "Name"
-  = f.text_field :name, class: "form-control"
-  = label_tag :description, "Description"
-  = f.text_field :description, class: "form-control"
-  = label_tag :price, "Price"
-  = f.text_field :price, class: "form-control"
-  = label_tag :pic, "Picture"
-  = f.file_field :pic
-  -#= label_tag :shop_id, "Shop ID"
-  -#= f.text_field :shop_id, value: params[:shop_id]
-  = f.hidden_field :shop_id, value: params[:shop_id]
-  = f.submit "Add", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = form_with(url: "/items", method: "post", class: "text-white") do |f|
+      = label_tag :name, "Name"
+      = f.text_field :name, class: "form-control"
+      = label_tag :description, "Description"
+      = f.text_field :description, class: "form-control"
+      = label_tag :price, "Price"
+      = f.text_field :price, class: "form-control"
+      = label_tag :pic, "Picture"
+      = f.file_field :pic
+      -#= label_tag :shop_id, "Shop ID"
+      -#= f.text_field :shop_id, value: params[:shop_id]
+      = f.hidden_field :shop_id, value: params[:shop_id]
+      = f.submit "Add", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"

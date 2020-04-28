@@ -1,11 +1,15 @@
-= form_with(url: "/users/" + @user.id.to_s, method: "put", class: "text-white") do |f|
-  = label_tag :email, "Email"
-  = f.text_field :email, value: @user.email, class: "form-control"
-  = f.label :password, "Password"
-  = f.password_field :password, value: @user.password, class: "form-control"
-  = f.label :name, "Name"
-  = f.text_field :name, value: @user.name, class: "form-control"
-  = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = form_with(url: "/users/" + @user.id.to_s, method: "put", class: "text-white") do |f|
+      = label_tag :email, "Email"
+      = f.text_field :email, value: @user.email, class: "form-control"
+      = f.label :password, "Password"
+      = f.password_field :password, value: @user.password, class: "form-control"
+      = f.label :name, "Name"
+      = f.text_field :name, value: @user.name, class: "form-control"
+      = f.submit "Update", class: "btn btn-primary", style: "margin-top:20px; margin-bottom: 10px"
 
-= link_to "Create a shop", "/shops/new", {:class => "btn btn-inverse formbutton"} if @user.user_type == 1 && @shop == nil
-= link_to @shop.name, "/shops/" + @shop.id.to_s, {:class => "btn btn-inverse formbutton", :style => "font-family: 'Cairo'; font-size: 15px"} if @shop
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = link_to "Create a shop", "/shops/new", {:class => "btn btn-inverse formbutton"} if @user.user_type == 1 && @shop == nil
+    = link_to @shop.name, "/shops/" + @shop.id.to_s, {:class => "btn btn-inverse formbutton", :style => "font-family: 'Cairo'; font-size: 15px"} if @shop

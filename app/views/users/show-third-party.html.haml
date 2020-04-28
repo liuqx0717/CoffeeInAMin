@@ -1,8 +1,12 @@
-= form_with do |f|
-  = label_tag :email, "Email"
-  = f.text_field :email, value: @user.email
-  = f.label :name, "Name"
-  = f.text_field :name, value: @user.name
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = form_with do |f|
+      = label_tag :email, "Email"
+      = f.text_field :email, value: @user.email
+      = f.label :name, "Name"
+      = f.text_field :name, value: @user.name
 
-= link_to "Create a shop", "/shops/new" if @user.user_type == 1 && @shop == nil
-= link_to @shop.name, "/shops/" + @shop.id.to_s if @shop
+.row.justify-content-center
+  .col-sm-10.col-md-8.col-lg-6
+    = link_to "Create a shop", "/shops/new" if @user.user_type == 1 && @shop == nil
+    = link_to @shop.name, "/shops/" + @shop.id.to_s if @shop
