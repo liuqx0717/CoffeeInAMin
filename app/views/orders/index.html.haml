@@ -40,6 +40,6 @@
           = get_name_by_user_id(order.user_id) if @user_type == 1
         = tag.td do
           = "Paid" if order.status == "COMPLETED"
+          = "Finished" if order.status == "FINISHED"
           = "Not Paid" if order.status == "NEW" && @user_type == 1
-          = "Finished" if order.status == "FINISHED" && @user_type == 1
           = link_to "Pay Now", "/orders/"+ order.id.to_s + "/checkout", class: "text-white" if order.status == "NEW" && @user_type == 0
